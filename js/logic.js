@@ -12,18 +12,28 @@ function createFeatures(earthquakeData) {
 
   // Define a function we want to run once for each feature in the features array
   // Give each feature a popup describing the place and time of the earthquake
-  function onEachFeature(feature, layer) {
-    layer.bindPopup("<h3>" + feature.properties.place +
-      "</h3><hr><p>" + new Date(feature.properties.time) + "</p>");
-  }
-
   // Create a GeoJSON layer containing the features array on the earthquakeData object
   // Run the onEachFeature function once for each piece of data in the array
-  var earthquakes = L.geoJSON(earthquakeData, {
-    onEachFeature: onEachFeature
 
+    function onEachFeature(feature, layer) {
+      layer.bindPopup("<h3>" + feature.properties.place +
+       "</h3><hr><p>" + new Date(feature.properties.time) +
+      "</h3><hr><p>Magnitude: " + feature.properties.mag + "</p>");
+  }
+
+    var earthquakes = L.geoJSON(earthquakeData, {
+      onEachFeature: onEachFeature,
+      pointToLayer: function (feature, latlng) {
+      return new L.circle(latlng,
+      {radius: getRadius(feature.properties.mag),
+      fillColor: getColor(feature.properties.mag),
+      fillOpacity: .6,
+      color: "#000",
+      stroke: true,
+      weight: .8
+      })
+    }
   });
-
     // Sending our earthquakes layer to the createMap function
     createMap(earthquakes);
 }
@@ -71,4 +81,18 @@ var myMap = L.map("map", {
 //     accessToken: API_KEY
 //   }).addTo(myMap);
 
+}
+
+
+function getColor(d){
+  return d > 5 ? "#a54500":
+  d  > 4 ? "#cc5500":
+  d > 3 ? "#ff6f08":
+  d > 2 ? "#ff9143":
+  d > 1 ? "#ffb37e":
+           "#ffcca5";
+}
+
+function getRadius(value){
+  return value*25000
 }
