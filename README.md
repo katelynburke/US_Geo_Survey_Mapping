@@ -14,5 +14,7 @@ The map I created includes data markers that reflect the magnitude of the earthq
 #### Data sources used: 
 * https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php
 
+![usgs_logo](https://github.com/katelynburke/US_Geo_Survey_Mapping/blob/master/Images/usgs_logo.png)
+
 #### Final map images: 
 The map plots all of the earthquakes from the dataset based on their longitude and latitude.
