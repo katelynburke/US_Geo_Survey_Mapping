@@ -39,7 +39,7 @@ function createMap(earthquakes) {
     "access_token=pk.eyJ1Ijoia21idXJrZTUiLCJhIjoiY2p3cjEzYTRwMWVleTQ5bnNwenJvNm8ydCJ9.tytCkU-09HfY1Yo3AzYs5Q")
         // accessToken= API_KEY;
   
-    var darkmap = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/dark-v9/tiles/256/{z}/{x}/{y}?" +
+    var lightmap = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}?" +
     "access_token=pk.eyJ1Ijoia21idXJrZTUiLCJhIjoiY2p3cjEzYTRwMWVleTQ5bnNwenJvNm8ydCJ9.tytCkU-09HfY1Yo3AzYs5Q")
       // accessToken= API_KEY;
   
@@ -47,7 +47,7 @@ function createMap(earthquakes) {
     var baseMaps = {
       "Satellite": satellite,
       "Outdoors": outdoors,
-      "Dark Map": darkmap
+      "Light Map": lightmap
     };
 
 // Create overlay object to hold our overlay layer
@@ -59,16 +59,16 @@ var overlayMaps = {
 var myMap = L.map("map", {
     center: [37.09, -95.71],
     zoom: 5,
-    layers: [outdoors, earthquakes]
+    layers: [outdoors, earthquakes, lightmap]
 });
   
 
 
-  L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
-    attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
-    maxZoom: 18,
-    id: "mapbox.light",
-    accessToken: API_KEY
-  }).addTo(myMap);
+//   L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
+//     attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
+//     maxZoom: 18,
+//     id: "mapbox.light",
+//     accessToken: API_KEY
+//   }).addTo(myMap);
 
 }
