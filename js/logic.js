@@ -26,7 +26,7 @@ function createFeatures(earthquakeData) {
       pointToLayer: function (feature, latlng) {
       return new L.circle(latlng,
       {radius: getRadius(feature.properties.mag),
-      fillColor: getColor(feature.properties.mag),
+      fillColor: addColor(feature.properties.mag),
       fillOpacity: .6,
       color: "#000",
       stroke: true,
@@ -71,26 +71,17 @@ var myMap = L.map("map", {
     zoom: 5,
     layers: [outdoors, earthquakes, lightmap]
 });
-  
-
-
-//   L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
-//     attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
-//     maxZoom: 18,
-//     id: "mapbox.light",
-//     accessToken: API_KEY
-//   }).addTo(myMap);
 
 }
 
 
-function getColor(d){
-  return d > 5 ? "#a54500":
-  d  > 4 ? "#cc5500":
-  d > 3 ? "#ff6f08":
-  d > 2 ? "#ff9143":
-  d > 1 ? "#ffb37e":
-           "#ffcca5";
+function addColor(d){
+  return d > 5 ? "#00cc69":
+  d  > 4 ? "#00cc9c":
+  d > 3 ? "#00ccc1":
+  d > 2 ? "#0087cc":
+  d > 1 ? "#8100cc":
+           "#cc0062";
 }
 
 function getRadius(value){
