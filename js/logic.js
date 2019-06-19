@@ -54,24 +54,25 @@ function createMap(earthquakes) {
       // accessToken= API_KEY;
 
     // Define a baseMaps object to hold our base layers
-var baseMaps = {
+    var baseMaps = {
       "Satellite": satellite,
       "Outdoors": outdoors,
       "Light Map": lightmap
     };
 
 // Create overlay object to hold our overlay layer
-var overlayMaps = {
-    "Earthquakes": earthquakes,
-};
+    var overlayMaps = {
+      "Earthquakes": earthquakes,
+    };
 
 // Create a map object
-var myMap = L.map("map", {
-    center: [37.09, -95.71],
-    zoom: 4.2,
-    layers: [outdoors, earthquakes, lightmap]
-});
-}
+    var myMap = L.map("map", {
+      center: [37.09, -95.71],
+      zoom: 4.2,
+      layers: [outdoors, earthquakes, lightmap]
+    });
+  }
+
 
 // // Add the layer control to the map
 //   L.control.layers(baseMaps, overlayMaps, {
@@ -110,24 +111,3 @@ function addColor(d){
 function getRadius(value){
   return value*25000
 };
-
-// var legend = L.control({position: 'bottomright'});
-
-// legend.onAdd = function (map) {
-
-//     var div = L.DomUtil.create('div', 'info legend'),
-//    grades = [0, 1, 2, 3, 4]
-//     labels = [];
-
-//     // loop through our density intervals and generate a label with a colored square for each interval
-//     for (var i = 0; i < grades.length; i++) {
-//         div.innerHTML +=
-//             '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
-//             grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
-// }
-
-// return div;
-// };
-
-// legend.addTo(map);
-// grades = [0, 1, 2, 3, 4]
