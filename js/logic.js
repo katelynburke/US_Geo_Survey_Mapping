@@ -52,9 +52,9 @@ function createMap(earthquakes) {
     var lightmap = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}?" +
     "access_token=pk.eyJ1Ijoia21idXJrZTUiLCJhIjoiY2p3cjEzYTRwMWVleTQ5bnNwenJvNm8ydCJ9.tytCkU-09HfY1Yo3AzYs5Q")
       // accessToken= API_KEY;
-  
+
     // Define a baseMaps object to hold our base layers
-    var baseMaps = {
+var baseMaps = {
       "Satellite": satellite,
       "Outdoors": outdoors,
       "Light Map": lightmap
@@ -68,21 +68,18 @@ var overlayMaps = {
 // Create a map object
 var myMap = L.map("map", {
     center: [37.09, -95.71],
-    zoom: 5,
+    zoom: 4.2,
     layers: [outdoors, earthquakes, lightmap]
 });
-
 }
 
-function addColor(d){
-  return d > 5 ? "#00cc69":
-  d  > 4 ? "#00cc9c":
-  d > 3 ? "#00ccc1":
-  d > 2 ? "#0087cc":
-  d > 1 ? "#8100cc":
-           "#cc0062";
-}
+// // Add the layer control to the map
+//   L.control.layers(baseMaps, overlayMaps, {
+//   collapsed: false
+// }).addTo(myMap);
 
+
+// Create a legend
 var legend = L.control({position: 'bottomleft'});
 
 legend.onAdd = function(myMap){
@@ -92,7 +89,7 @@ legend.onAdd = function(myMap){
 
     for (var i = 0; i < grades.length; i++) {
       div.innerHTML +=
-          '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
+          '<i style="background:' + addColor(grades[i] + 1) + '"></i> ' +
           grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
   }
   return div;
@@ -100,6 +97,15 @@ legend.onAdd = function(myMap){
 
 legend.addTo(myMap);
 
+
+function addColor(d){
+  return d > 5 ? "#00cc69":
+  d  > 4 ? "#00cc9c":
+  d > 3 ? "#00ccc1":
+  d > 2 ? "#0087cc":
+  d > 1 ? "#8100cc":
+           "#cc0062";
+}
  
 function getRadius(value){
   return value*25000
