@@ -1,5 +1,7 @@
 ## Visualizing USGS Earthquake Data
 
+![final_map](https://github.com/katelynburke/US_Geo_Survey_Mapping/blob/master/Images/final_map.png)
+
 #### Overview:
 In this project, I created a map that visualizes earthquakes that occur in the U.S. based on a live API feed (updated every 5 minutes) provided by the United States Geological Survey, or USGS for short. The USGS is responsible for providing scientific data about natural hazards, the health of our ecosystems and environment; and the impacts of climate and land-use change.
 
