@@ -21,3 +21,4 @@ The map plots all of the earthquakes from the dataset based on their longitude a
 
 ![final_map_1](https://github.com/katelynburke/US_Geo_Survey_Mapping/blob/master/Images/final_map_image.png)
 ![final_map_2](https://github.com/katelynburke/US_Geo_Survey_Mapping/blob/master/Images/map_image_2.png)
+![legend](https://github.com/katelynburke/US_Geo_Survey_Mapping/blob/master/Images/legend.png)
