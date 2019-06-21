@@ -86,18 +86,20 @@ function createMap(earthquakes) {
 }
 
 
-// // Add the layer control to the map
+// Add the layer control to the map
 L.control.layers(baseMaps, overlayMaps, {
   collapsed: false
 }).addTo(myMap);
 
-// Create a legend
-var legend = L.control({position: 'bottomleft'});
 
+// Create a legend
+var legend = L.control({position: 'bottomright'});
+
+var labels = [];
 legend.onAdd = function(myMap){
   var div = L.DomUtil.create('div', 'info legend');
   var grades = [0, 1, 2, 3, 4, 5];
-  var labels = [];
+ // var labels = [];
 
   for (var i = 0; i < grades.length; i++) {
     div.innerHTML +=
@@ -112,25 +114,21 @@ legend.addTo(myMap);
 
 
 function addColor(d){
-  return d > 5 ? '#00cc69' :
-    d > 4 ? '#00cc9c' :
-    d > 3 ? '#00ccc1' :
-    d > 2 ? '#0087cc' :
-    d > 1 ? '#8100cc' :
-           '#cc0062';
-}
+  if (d > 5) {
+    return '#00cc69';
+  } else if (d > 4) {
+    return '#00cc9c';
+  } else if (d > 3) {
+    return '#00ccc1';
+  } else if (d > 2) {
+    return '#0087cc';
+  } else if (d > 1) {
+    return '#8100cc';
+  } else {
+    return '#cc0062';
+  }
+  }
 
-// let myVar;
-
-// if (true) {
-//   // do this;
-//   myVar = 'do true';
-// } else {
-//   // do this
-//   myVar = ' false';
-// }
-
-// const myVar = true ? 'do true' : 'do false';
  
 function getRadius(value){
   return value*25000
