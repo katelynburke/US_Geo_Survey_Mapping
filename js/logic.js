@@ -103,8 +103,8 @@ legend.onAdd = function(myMap){
 
   for (var i = 0; i < grades.length; i++) {
     div.innerHTML +=
-      '<i style="background:' + addColor(grades[i] + 1) + '"></i> ' +
-      grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+    '<i style="background:' + addColor(grades[i] + 1) + '">&nbsp&nbsp&nbsp&nbsp</i> ' +
+    grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
   }
 
   return div;
@@ -129,7 +129,6 @@ function addColor(d){
   }
   }
 
- 
 function getRadius(value){
   return value*25000
 };
